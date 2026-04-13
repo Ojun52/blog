@@ -23,7 +23,16 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkMath, [remarkToc, { heading: "目次" }]],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex,
+      [
+        rehypeExternalLinks,
+        {
+          content: { type: "text", value: " 🔗" },
+          target: "_blank",
+          rel: ["noopener", "noreferrer"],
+        },
+      ],
+    ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
@@ -37,16 +46,6 @@ export default defineConfig({
       ],
     },
   },
-  rehypePlugins: [
-  [
-    rehypeExternalLinks,
-    {
-      content: { type: "text", value: " 🔗" },
-      target: "_blank",
-      rel: ["noopener", "noreferrer"],
-    },
-  ],
-],
   vite: {
     // eslint-disable-next-line
     // @ts-ignore

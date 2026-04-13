@@ -1,15 +1,17 @@
-import { defineConfig, envField, fontProviders } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import remarkToc from "remark-toc";
-import remarkCollapse from "remark-collapse";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
-import { transformerFileName } from "./src/utils/transformers/fileName";
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig, envField, fontProviders } from "astro/config";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+import remarkToc from "remark-toc";
 import { SITE } from "./src/config";
+import { transformerFileName } from "./src/utils/transformers/fileName";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +22,8 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [remarkMath, [remarkToc, { heading: "目次" }]],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
@@ -34,6 +37,16 @@ export default defineConfig({
       ],
     },
   },
+  rehypePlugins: [
+  [
+    rehypeExternalLinks,
+    {
+      content: { type: "text", value: " 🔗" },
+      target: "_blank",
+      rel: ["noopener", "noreferrer"],
+    },
+  ],
+],
   vite: {
     // eslint-disable-next-line
     // @ts-ignore
@@ -61,12 +74,12 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        name: "Google Sans Code",
-        cssVariable: "--font-google-sans-code",
+        name: "Noto Sans JP",
+        cssVariable: "--font-noto-sans",
         provider: fontProviders.google(),
-        fallbacks: ["monospace"],
-        weights: [300, 400, 500, 600, 700],
-        styles: ["normal", "italic"],
+        fallbacks: ["sans-serif"],
+        weights: [400, 700],
+        styles: ["normal"],
       },
     ],
   },

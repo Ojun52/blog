@@ -3,7 +3,7 @@ export const SITE = {
   author: "Ojun",
   profile: "https://ojun.dev/",
   desc: "技術+日常のブログです。",
-  title: "Daily and Tech Blog",
+  title: "Ojun",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,

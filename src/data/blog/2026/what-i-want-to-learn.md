@@ -1,5 +1,5 @@
 ---
-title: 最近勉強したいこと（2026年4月時点）
+title: 最近勉強したいと思っていること（2026年4月時点）
 author: Ojun
 slug: what-i-want-to-learn-2604
 featured: true

@@ -5,6 +5,7 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import tailwindcss from "@tailwindcss/vite";
+import { unified } from "@astrojs/markdown-remark";
 import { defineConfig, envField, fontProviders } from "astro/config";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
@@ -22,17 +23,20 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, [remarkToc, { heading: "目次" }]],
-    rehypePlugins: [rehypeKatex,
-      [
-        rehypeExternalLinks,
-        {
-          content: { type: "text", value: " 🔗" },
-          target: "_blank",
-          rel: ["noopener", "noreferrer"],
-        },
+    processor: unified({
+      remarkPlugins: [remarkMath, [remarkToc, { heading: "目次" }]],
+      rehypePlugins: [
+        rehypeKatex,
+        [
+          rehypeExternalLinks,
+          {
+            content: { type: "text", value: " 🔗" },
+            target: "_blank",
+            rel: ["noopener", "noreferrer"],
+          },
+        ],
       ],
-    ],
+    }),
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
@@ -69,17 +73,14 @@ export default defineConfig({
       }),
     },
   },
-  experimental: {
-    preserveScriptOrder: true,
-    fonts: [
-      {
-        name: "Noto Sans JP",
-        cssVariable: "--font-noto-sans",
-        provider: fontProviders.google(),
-        fallbacks: ["sans-serif"],
-        weights: [400, 700],
-        styles: ["normal"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      name: "Noto Sans JP",
+      cssVariable: "--font-noto-sans",
+      provider: fontProviders.google(),
+      fallbacks: ["sans-serif"],
+      weights: [400, 700],
+      styles: ["normal"],
+    },
+  ],
 });

@@ -9,6 +9,7 @@ description: kappa makiのwriteup
 tags:
   - tech
   - ctf
+  - pwn
 ogImage: "@/assets/images/2026/kappa-maki.jpg"
 ---
 

@@ -5,7 +5,7 @@ slug: no-win-func
 featured: true
 draft: false
 pubDatetime: 2026-07-19T15:00:00.000Z
-description: kappa makiのwriteup
+description: no win funcのwriteup
 tags:
   - tech
   - ctf

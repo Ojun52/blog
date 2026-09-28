@@ -4,17 +4,17 @@ author: Ojun
 slug: intern-at-flatt-security
 featured: true
 draft: false
-pubDatetime: 2026-07-19T15:00:00.000Z
+pubDatetime: 2026-09-28T15:00:00.000Z
 description: Flatt Securityでのサマーインターンで学んだこと
 tags:
   - tech
   - ctf
   - intern
   - web
-ogImage: "@/assets/images/2026/flatt-intern.png"
+ogImage: "@/assets/images/2026/flatt-intern.jpeg"
 ---
 
-![Flatt Intern 集合写真](@/assets/images/2026/flatt-intern.png)
+![Flatt Intern 集合写真](@/assets/images/2026/flatt-intern.jpeg)
 
 ## 概要
 

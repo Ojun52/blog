@@ -4,7 +4,7 @@ author: Ojun
 slug: fsbase-modification
 featured: true
 draft: false
-pubDatetime: 2026-10-11T15:00:00.000Z
+pubDatetime: 2026-10-10T21:00:00.000Z
 description: fsbase modificationのwriteup
 tags:
   - tech
